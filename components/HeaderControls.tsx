@@ -54,7 +54,7 @@ export const HeaderControls: React.FC<HeaderControlsProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Filter matches matching selected map and date
+  // Filter matches matching selected map & date
   const filteredMatches = matches.filter(
     (m) => m.map === selectedMap && m.date === selectedDate
   );
