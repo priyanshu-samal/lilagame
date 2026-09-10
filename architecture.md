@@ -17,7 +17,7 @@ The system is split into two main stages:
 
 | Technology | Purpose | Why |
 |---|---|---|
-| Next.js | Frontend application | Provides a structured React application and production deployment support |
+| Nextjs | Frontend application | Provides a structured React application and production deployment support |
 | React | UI components | Component-based interface for filters, timeline and match information |
 | TypeScript | Application logic | Type safety for telemetry and visualization data |
 | HTML Canvas | Map rendering | Efficient rendering of paths, markers, animations and heatmaps |

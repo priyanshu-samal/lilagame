@@ -112,7 +112,7 @@ Unlike generic death events, storm deaths can provide information about the rela
 
 ### Implication
 
-Storm deaths should be analyzed spatially and temporally rather than being grouped with combat deaths.
+Storm deaths should be analyzed spatially and temporally rather than being grouped with combat deaths
 
 Useful metrics include:
 
