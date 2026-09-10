@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LILA BLACK — Player Journey Explorer
 
-## Getting Started
+An interactive telemetry visualization tool for Level Designers at LILA Games.
 
-First, run the development server:
+The tool transforms raw LILA BLACK gameplay telemetry into an interactive map-based experience for exploring player movement, combat, deaths, loot activity, storm deaths, and match progression.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Deployment:**  
+[ADD YOUR DEPLOYED VERCEL / NETLIFY URL HERE]
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What This Tool Does
 
-## Learn More
+The Player Journey Explorer allows a Level Designer to inspect how players actually move through LILA BLACK maps.
 
-To learn more about Next.js, take a look at the following resources:
+Instead of inspecting raw telemetry data, the designer can:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- View player journeys directly on the game minimap
+- Distinguish human players from bots
+- Replay a match over time
+- Inspect kills, deaths, loot, and storm deaths
+- Filter by map, date, and match
+- Filter between humans and bots
+- View traffic heatmaps
+- View combat/kill heatmaps
+- View death heatmaps
+- View storm-death locations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The goal is to make gameplay telemetry understandable visually and help Level Designers identify movement patterns, combat hotspots, underused areas, and potential gameplay problems.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Match Replay
+
+Select a map, date, and match to reconstruct the match from the underlying player/bot journeys.
+
+The replay timeline allows the designer to:
+
+- Play
+- Pause
+- Seek through the match
+- Change playback speed
+- Observe player movement over time
+- Observe events at their corresponding timestamps
+
+### Player Journeys
+
+Player movement is rendered directly on top of the supplied minimap images.
+
+Humans and bots use visually different representations.
+
+### Event Visualization
+
+The following telemetry events are visualized:
+
+- Kill
+- Killed
+- BotKill
+- BotKilled
+- Loot
+- KilledByStorm
+
+### Heatmaps
+
+The tool provides aggregate spatial views for:
+
+- Traffic
+- Kills / Combat
+- Deaths
+- Storm deaths
+
+These allow a designer to analyze behavior beyond a single match.
+
+### Filters
+
+The application supports filtering by:
+
+- Map
+- Date
+- Match
+- Player type
+
+Player type can be:
+
+- All
+- Humans
+- Bots
+
+---
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Next.js | Web application and deployment |
+| React | UI components and application state |
+| TypeScript | Type safety and maintainability |
+| Canvas | Rendering player trajectories and map overlays efficiently |
+| Python | Preprocessing the supplied Parquet telemetry |
+| JSON | Serving preprocessed match and heatmap data to the browser |
+| WebP | Optimized minimap assets |
+
+---
+
+## Architecture
+
+The raw telemetry is processed before being consumed by the browser.
+
+```text
+Raw Parquet telemetry
+        |
+        v
+Python preprocessing
+        |
+        +--> Match data
+        |
+        +--> Player journeys
+        |
+        +--> Timeline events
+        |
+        +--> Heatmap data
+        |
+        v
+Static JSON assets
+        |
+        v
+Next.js application
+        |
+        v
+Canvas visualization
+        |
+        v
+Level Designer
