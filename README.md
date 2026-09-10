@@ -7,7 +7,7 @@ The tool reconstructs historical player journeys from telemetry data and display
 ## Live Demo
 
 **Deployed App:**  
-ADD YOUR DEPLOYED URL HERE
+https://lilagame.vercel.app/
 
 **GitHub Repository:**  
 https://github.com/priyanshu-samal/lilagame
